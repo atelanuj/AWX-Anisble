@@ -1,0 +1,28 @@
+---
+version: 3
+
+build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '--pre'
+
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel8:latest
+
+# specifies the dependencies required to build the Docker image.
+dependencies:
+  galaxy: requirements.yml
+  python: requirements.txt
+  system: bindep.txt
+
+# specifies a list of files to be copied to the image during the build process.
+additional_build_files:
+    - src: files/ansible.cfg
+      dest: configs
+
+# commands to be executed during the build processs for the Docker Image
+additional_build_steps:
+  prepend: |
+    RUN dnf upgrade -f
+    RUN pip3 install --upgrade pip setuptools
+
+  
