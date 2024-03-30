@@ -164,7 +164,7 @@ The :O option is only supported for directories. It is highly recommended that y
 
 This informs podman to run a command similar to the example below, where the configuration is mounted and the ssh command works as expected.
 
-    'podman run -v /ssh_config:/etc/ssh/ssh_config.d/:O ...'
+    podman run -v /ssh_config:/etc/ssh/ssh_config.d/:O ...
 
 To expose isolated paths in OpenShift or Kubernetes containers as HostPath, assume the following configuration:
 _images/settings-paths2expose-iso-jobs-mount-containers.png
